@@ -16,11 +16,6 @@ export default function Card({ product }: Props) {
                 <p>{product.description.slice(0, 30) + `...`}</p>
                 <Rate disabled defaultValue={4.5} />
             </div>
-            {/* <div className='card-footer'>
-                <button className='theme-btn'>
-                    View Details
-                </button>
-            </div> */}
         </div>
     )
 }

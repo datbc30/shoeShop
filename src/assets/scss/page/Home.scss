@@ -1,31 +1,90 @@
-.home-page{
-    .container{
-        .home-wapper{
-            .home-top{
-
-            }
-            .home-bottom{
-                .row{
-                   .card{
-                       background-color: rgba(0, 0, 0, 0.03);;
-                       .card-body{
-                         
-                       }
-                       .card-footer{
-                           background-color: rgba(247,247,247,1);
-                           border-top: none;
-                           padding: 0;
-                           
-                           button{
-                               width: 100%;
-                               &:hover{
-                                   color: white;
-                               }
-                           }
-                       }
-                   }
+.home-page {
+  .conten {
+    .home-wapper {
+      .home-top {
+        .carousel-home {
+          .slider-background {
+            background-repeat: no-repeat;
+            background-size: cover;
+            .slider-background-wapper {
+              img {
+                width: 100%;
+                max-height: 600px;
+                object-fit: cover;
+              }
+              .wapper-left {
+                // width: 50%;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+                  transition: all 0.8s;
+                  opacity: 0.1;
+                  background: black;
                 }
+              }
             }
+          }
+          .slider-background2 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            .slider-background-wapper {
+              img {
+                width: 100%;
+                max-height: 600px;
+                object-fit: cover;
+              }
+            }
+          }
+          .slider-background3 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            .slider-background-wapper {
+              img {
+                width: 100%;
+                max-height: 600px;
+                object-fit: cover;
+              }
+            }
+          }
         }
+      }
+      .home-bottom {
+        .container {
+          .row {
+            .card {
+              min-height: 510px;
+              border: 1px solid rgba(0, 102, 255, 0.1);
+              box-shadow: rgba(178, 178, 178, 30%) 0px 5px 15px;
+              &:hover {
+                border-color: white;
+                -webkit-box-shadow: 10px 0 60px rgba(178, 178, 178, 30%);
+                box-shadow: 10px 0 60px rgba(178, 178, 178, 30%);
+              }
+              .card-body {
+                background-color: rgba(247, 247, 247, 1);
+                h4{
+                    overflow: hidden;
+                }
+              }
+              .card-footer {
+                border-top: none;
+                padding: 0;
+
+                button {
+                  width: 100%;
+                  &:hover {
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }

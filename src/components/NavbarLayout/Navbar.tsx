@@ -6,10 +6,10 @@ export default function Navbar({}: Props) {
   return (
     <nav className="navbar">
       <div className="container">
-        <a href="#" className="active">
+        <a href="#">
           Home
         </a>
-        <a href="#">profile</a>
+        <a href="#">Men</a>
         <a href="#">Women</a>
         <a href="#">Kid</a>
         <a href="#">Sport</a>

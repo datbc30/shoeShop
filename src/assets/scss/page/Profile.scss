@@ -1,0 +1,145 @@
+.profile {
+    &__title {
+      font-family: "Inter", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 48px;
+  
+      color: #fffefe;
+  
+      display: flex;
+      align-items: center;
+      padding-left: 34px;
+  
+      height: 74px;
+  
+      max-width: 575px;
+      background: linear-gradient(180deg, #f21299 0%, #1b02b5 100%);
+    }
+  
+    &__form {
+      display: flex;
+      gap: 28px;
+      margin-left: 34px;
+      margin-top: 26px;
+      margin-right: 54px;
+      border-bottom: 2px solid #dedddc;
+      padding-bottom: 13px;
+    }
+  
+    &__right {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 37px;
+    }
+  
+    &__field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    &__field-title {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      color: rgba(0, 0, 0, 0.6);
+      letter-spacing: 0.135px;
+      margin-left: 7px;
+    }
+  
+    &__field-input {
+      display: flex;
+      align-items: center;
+      width: 443px;
+      height: 54px;
+      padding: 16px 12px 14px 14px;
+      background: rgba(33, 33, 33, 0.08);
+      border-radius: 4px 4px 0px 0px;
+      outline: none;
+      border: none;
+    }
+  
+    &__button {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      color: #fffefe;
+  
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 12px 24px;
+      gap: 10px;
+      background: #6200ee;
+      /* 04 dp */
+  
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 50px;
+    }
+  
+    &__tab {
+      display: flex;
+      align-items: center;
+      padding-left: 51px;
+      padding-top: 10px;
+    }
+  
+    &__tab > div {
+      display: flex;
+      align-items: center;
+  
+      border: 1px solid #dedddc;
+      border-top: 0;
+      padding-left: 32px;
+      height: 60px;
+      width: 277px;
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 39px;
+    }
+  
+    &__product {
+      padding-left: 100px;
+      padding-right: 18px;
+      padding-top: 65px;
+    }
+  
+    &__product > p {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(180deg, #cb0dc3 0%, #7d0db1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      // text-fill-color: transparent;
+    }
+    &__product th {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      padding: 18px 0;
+      text-align: center;
+      background: #d9d9d9;
+    }
+    &__product td {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      padding: 16px;
+      text-align: center;
+    }
+  }
+  

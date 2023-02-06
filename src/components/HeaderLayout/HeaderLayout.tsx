@@ -1,20 +1,24 @@
 import { Badge } from 'antd'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { RootState } from '../../redux/configStore'
 
 type Props = {}
 
 const waiting = require("../../assets/img/image3.png")
 
 export default function HeaderLayout({ }: Props) {
+  const {arrCart, productDetail} = useSelector((state: RootState) => state.productReducer)
+
   return (
     <div className='header-shoe'>
       <div className='container'>
         <div className='wapper-header'>
           <div className='header-left'>
-            <a href="#" className='logo'>
+            <NavLink to="/home" className='logo'>
               <img src={waiting} alt="..." />
-            </a>
+            </NavLink>
           </div>
           <div className='header-right'>
             <div className='user-interact'>
@@ -22,8 +26,8 @@ export default function HeaderLayout({ }: Props) {
                 <i className='fas fa-search'></i>
               </div>
               <div className='user-cart'>
-                <NavLink to={""}>
-                  <Badge count={2}>
+                <NavLink to={`/cart/${productDetail.id}`}>
+                  <Badge count={arrCart.length}>
                     <i className="fas fa-shopping-cart"></i>
                   </Badge>
                 </NavLink>

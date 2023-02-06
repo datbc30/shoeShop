@@ -1,5 +1,7 @@
 import { configureStore, PayloadAction } from "@reduxjs/toolkit";
 import productReducer from './reducers/productReducer'
+import userReducer from './reducers/userReducer'
+
 
 
 export const store = configureStore({
@@ -8,6 +10,7 @@ export const store = configureStore({
       return 1;
     },
     productReducer: productReducer,
+    userReducer:userReducer
   },
   devTools: true,
 });

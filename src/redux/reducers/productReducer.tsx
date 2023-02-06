@@ -3,6 +3,7 @@ import axios from "axios";
 import { number } from "yup";
 import { http } from "../../util/setting";
 import { AppDispatch } from "../configStore";
+import { redirect } from "react-router-dom";
 
 export interface ProductModel {
   id: number,
@@ -20,8 +21,50 @@ export interface ProductModel {
   image: string
 }
 
+export interface ProductDetail {
+  id:               number;
+  name:             string;
+  alias:            string;
+  price:            number;
+  feature:          boolean;
+  description:      string;
+  size:             string[];
+  shortDescription: string;
+  quantity:         number;
+  image:            string;
+  categories:       Category[];
+  relatedProducts:  RelatedProduct[];
+}
+
+export interface ProductCart {
+  id: number;
+  name: string;
+  price: number;
+  quantityBuy: number;
+  image:string;
+}
+
+export interface Category {
+  id:       string;
+  category: string;
+}
+
+export interface RelatedProduct {
+  id:               number;
+  name:             string;
+  alias:            string;
+  feature:          boolean;
+  price:            number;
+  description:      string;
+  shortDescription: string;
+  image:            string;
+}
+
+
 const initialState: any = {
   arrProduct: [],
+  productDetail:[],
+  arrCart: []
 };
 
 const productReducer = createSlice({
@@ -30,12 +73,18 @@ const productReducer = createSlice({
   reducers: {
       getProductAction:(state,action:PayloadAction<ProductModel[]>) => {
           state.arrProduct = action.payload
-      }
+      },
+      getProductDetail:(state,action:PayloadAction<ProductDetail[]>) => {
+        state.productDetail = action.payload
+      },
+      addToCart: (state, action :PayloadAction<ProductCart>) => {
+        state.arrCart.push(action.payload)
+      },
   }
 });
 
 
-export const { getProductAction } = productReducer.actions;
+export const { getProductAction,getProductDetail,addToCart } = productReducer.actions;
 
 export default productReducer.reducer;
 
@@ -52,3 +101,22 @@ export const getProductApi = () => {
     }
   }
 }
+
+export const getProductDetailApi = ( id: number ) => {
+  return async (dispatch:AppDispatch) => {
+    try {
+        const result = await http.get(`Product/getbyid?id=${id}`)
+        console.log({result});
+        if(!result) {
+          return redirect("/home");
+        }
+        let arrDetail:ProductDetail[] = result.data.content
+        const action = getProductDetail(arrDetail)
+        dispatch(action)
+    }
+    catch(err){
+      console.log({err});
+    }
+  }
+}
+
