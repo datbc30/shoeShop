@@ -10,11 +10,6 @@
         margin-right: 20px;
         color: inherit;
         position: relative;
-        &.active{
-          &::after{
-            width: 100%;
-          }
-        }
         &::after {
           content: "";
           width: 0px;

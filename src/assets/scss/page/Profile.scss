@@ -143,3 +143,19 @@
     }
   }
   
+  .gender-option1{
+    display: flex;
+    .gender-click{
+      margin-left: 15px;
+    }
+  }
+  .btn-profile{
+    display: flex;
+    flex-direction: row-reverse;
+    button{
+      border: 1px solid gray;
+          &:hover {
+            color: white;
+          }
+    }
+  }

@@ -1,8 +1,9 @@
 import { Badge } from 'antd'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { RootState } from '../../redux/configStore'
+import { ACCESS_TOKEN, getStore } from '../../util/setting'
 
 type Props = {}
 
@@ -10,7 +11,17 @@ const waiting = require("../../assets/img/image3.png")
 
 export default function HeaderLayout({ }: Props) {
   const {arrCart, productDetail} = useSelector((state: RootState) => state.productReducer)
-
+  const navigate = useNavigate()
+  const submitoder = () => {
+    console.log(getStore(ACCESS_TOKEN));
+    if (getStore(ACCESS_TOKEN) === null) {
+      alert('Requires you to login!')
+      return navigate('/login')
+    }
+    else {
+      return navigate('/profile')
+    }
+  }
   return (
     <div className='header-shoe'>
       <div className='container'>
@@ -22,9 +33,9 @@ export default function HeaderLayout({ }: Props) {
           </div>
           <div className='header-right'>
             <div className='user-interact'>
-              <div className='user-search'>
+              {/* <div className='user-search'>
                 <i className='fas fa-search'></i>
-              </div>
+              </div> */}
               <div className='user-cart'>
                 <NavLink to={`/cart/${productDetail.id}`}>
                   <Badge count={arrCart.length}>
@@ -33,7 +44,9 @@ export default function HeaderLayout({ }: Props) {
                 </NavLink>
               </div>
               <div className='user-login'>
-                <a href="#">
+                <a style={{cursor: 'pointer'}} onClick={() => {
+                  submitoder()
+                }}>
                   <i className='fas fa-user'></i>
                 </a>
               </div>

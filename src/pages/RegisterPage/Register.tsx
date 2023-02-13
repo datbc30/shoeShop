@@ -41,8 +41,8 @@ export default function Register({}: Props) {
           <div className="container">
             <div className="row content-register">
               <div className="col-10 mx-auto detail-register">
-                <h3 className="text-left display-6 text-dark fs-1">Register</h3>
-                <hr />
+                <h3 className="text-left display-6 text-dark fs-1 text-center">Register</h3>
+                {/* <hr /> */}
                 <form id="formRegister" onSubmit={form.handleSubmit}>
                   <div className="row register-item">
                     <div className="col-lg-6 col-mb-8 col-sm-12 form-group">
@@ -185,7 +185,7 @@ export default function Register({}: Props) {
                   </div>
                   <div className="button mt-4 mb-4">
                     <div id="btnSubmit">
-                      <button type="submit" className="btn-submit btn btn-primary">
+                      <button type="submit" className="btn-submit theme-btn">
                         Submit
                       </button>
                     </div>

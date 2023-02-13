@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getProfileApi } from '../../redux/reducers/userReducer';
 import OderHistory from '../../components/OderHistory/OderHistory';
+import { Space, Table, Tag } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 
 type Props = {}
 
@@ -16,6 +18,15 @@ export interface Profile {
     phone: string;
     name: string;
 }
+
+interface DataType {
+    key: string;
+    name: string;
+    age: number;
+    address: string;
+    tags: string[];
+}
+
 
 export default function UserProfilePage({ }: Props) {
     const dispatch: AppDispatch = useDispatch();
@@ -55,10 +66,65 @@ export default function UserProfilePage({ }: Props) {
         dispatch(getProfileApi());
     }, []);
 
+    // antd
+
+    const columns: ColumnsType<DataType> = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: (text) => <a>{text}</a>,
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+        {
+            title: 'Tags',
+            key: 'tags',
+            dataIndex: 'tags',
+            render: (_, { tags }) => (
+                <>
+                    {tags.map((tag) => {
+                        let color = tag.length > 5 ? 'geekblue' : 'green';
+                        if (tag === 'loser') {
+                            color = 'volcano';
+                        }
+                        return (
+                            <Tag color={color} key={tag}>
+                                {tag.toUpperCase()}
+                            </Tag>
+                        );
+                    })}
+                </>
+            ),
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (_, record) => (
+                <Space size="middle">
+                    <a>Invite {record.name}</a>
+                    <a>Delete</a>
+                </Space>
+            ),
+        },
+    ];
+
+    const data: DataType[] = [
+       
+    ];
+
     return (
         <div className="profile py-4">
             <section className="profile-upper">
-                <div className="profile-header">
+                <div className="profile-header mb-4">
                     <div className="container">
                         <h3>Profile</h3>
                     </div>
@@ -163,7 +229,7 @@ export default function UserProfilePage({ }: Props) {
                                                         Gender
                                                     </p>
                                                 </div>
-                                                <div className="gender-option">
+                                                <div className="gender-option1">
                                                     <div className="gender-click">
                                                         <input
                                                             defaultChecked={userLogin?.gender}
@@ -196,7 +262,7 @@ export default function UserProfilePage({ }: Props) {
                                         <div id="btnSubmit">
                                             <button
                                                 type="submit"
-                                                className="btn-submit btn btn-primary"
+                                                className="btn-submit theme-btn"
                                             >
                                                 Update
                                             </button>
@@ -208,32 +274,17 @@ export default function UserProfilePage({ }: Props) {
                     </div>
                 </div>
             </section>
-             <OderHistory />                                               
-            {/* <section className="profile-under">
-          <div className="container">
-            <Tabs defaultActiveKey="1">
-              <Tabs.TabPane tab="Order history" key="1">
-                <div className="history" columns={columns}>
-                  <OrderHistory />
+            {/* <OderHistory />  */}
+            <section className='favorite mt-5'>
+                <div className='container'>
+                    <div className='title-favorite'>
+                        <h3>Favorite</h3>
+                    </div>
+                    <div className='table-favorite'>
+                         <Table scroll={{ x: true}} columns={columns} dataSource={data} />
+                    </div>
                 </div>
-  
-                <div style={{ textAlign: 'right' }}>
-                  <Pagination defaultCurrent={1} total={50} />
-  
-  
-  
-                </div>
-              </Tabs.TabPane>
-              <Tabs.TabPane tab="Favorite" key="2">
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  rowKey={obj => obj.id}
-                />
-              </Tabs.TabPane>
-            </Tabs>
-          </div>
-        </section> */}
+            </section>
         </div>
     )
 }

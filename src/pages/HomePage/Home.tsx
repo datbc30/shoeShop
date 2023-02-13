@@ -4,7 +4,7 @@ import Card from '../../components/CardProduct/CardProduct'
 import { AppDispatch, RootState } from '../../redux/configStore'
 import { getProductApi, ProductModel } from '../../redux/reducers/productReducer'
 import { Carousel } from 'antd';
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 type Props = {}
 
@@ -21,20 +21,19 @@ const contentStyle: React.CSSProperties = {
 export default function Home({ }: Props) {
   const { arrProduct, store } = useSelector((state: RootState) => state.productReducer)
   const dispatch: AppDispatch = useDispatch()
-  const navigate = useNavigate()
+  const {pathname} = useLocation()
 
   useEffect(() => {
     const actionThuk = getProductApi()
     dispatch(actionThuk)
-  }, [])
+    window.scrollTo(0,0)
+  }, [pathname])
 
 
 
   const renderProduct = () => {
     return arrProduct.map((item: ProductModel, index: number) => {
-      return <div className='col-lg-4 col-md-6' key={index} onClick={() => {
-        navigate(`/detail/${item.id}`)
-      }}>
+      return <div className='col-lg-4 col-md-6' key={index}>
         <Card product={item} />
       </div>
     })
@@ -46,7 +45,7 @@ export default function Home({ }: Props) {
         <div className='home-wapper'>
           <div className='home-top'>
             <div className='home-top-title'>
-              <h2 className='text-center'>Shoes Shop</h2>
+              <h2 className='text-center mb-3'>Shoes Shop</h2>
             </div>
             <div className='carousel-home mt-2 mb-2'>
               <Carousel autoplay>

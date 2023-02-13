@@ -10,7 +10,7 @@ export default function FooterLayout({}: Props) {
     <div className="footer-top  footer-element text-center">
       <div className="container">
         <div className="row">
-          <div className="col-4">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="item">
               <h2>Get help</h2>
               <ul>
@@ -21,7 +21,7 @@ export default function FooterLayout({}: Props) {
               </ul>
             </div>
           </div>
-          <div className="col-4 middle">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 middle">
             <div className="item">
               <h2>Support</h2>
               <ul>
@@ -32,7 +32,7 @@ export default function FooterLayout({}: Props) {
               </ul>
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="item">
               <h2>register</h2>
               <p onClick={() => {
@@ -41,6 +41,14 @@ export default function FooterLayout({}: Props) {
               <a onClick={()=> {
                 navigate('/login')
               }}>Login</a>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div className="item">
+              <h2>Contact</h2>
+              <a onClick={()=> {
+                navigate('/home')
+              }}> + 0922973414</a>
             </div>
           </div>
         </div>

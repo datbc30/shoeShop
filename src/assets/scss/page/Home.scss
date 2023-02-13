@@ -56,6 +56,14 @@
         .container {
           .row {
             .card {
+              a{
+                display: flex;
+                flex-direction: row-reverse;
+                color:  red;
+                padding: 10px;
+                font-size: 20px;
+                
+              }
               min-height: 510px;
               border: 1px solid rgba(0, 102, 255, 0.1);
               box-shadow: rgba(178, 178, 178, 30%) 0px 5px 15px;

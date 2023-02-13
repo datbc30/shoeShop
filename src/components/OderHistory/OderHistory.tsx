@@ -6,7 +6,7 @@ type Props = {}
 
 export default function OderHistory({}: Props) {
     const { userLogin } = useSelector((state: RootState) => state.userReducer);
-    console.log(userLogin);  
+    console.log({userLogin});  
     const renderOrderTable = () => {
         if (!userLogin) {
           return <></>;
@@ -76,8 +76,6 @@ export default function OderHistory({}: Props) {
                       </tr>
                     )
                   })}
-    
-    
                 </tbody>
               </table>
             </div>

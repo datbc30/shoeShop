@@ -8,7 +8,7 @@ import { LoginApi } from '../../redux/reducers/userReducer';
 
 type Props = {}
 
-export default function Login({}: Props) {
+export default function Login({ }: Props) {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate()
   const { userToken } = useSelector((state: RootState) => state.userReducer);
@@ -39,66 +39,68 @@ export default function Login({}: Props) {
   }, [userToken]);
 
   return (
-    <section>
-    <div className="login-page">
-      <div className="login-title">
-        <h3>Login</h3>
-      </div>
-      <form className="loginForm" id="formLogin" onSubmit={frm.handleSubmit}>
-        <div className="formlable">
-          <div className="form-group  mb-3">
-            <label htmlFor="floatingInput" style={{ fontSize: 20 }}>
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="floatingInput"
-              name="email"
-              required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              value={frm.values.email}
-              onChange={frm.handleChange}
-              onBlur={frm.handleBlur}
-            />
-            {frm.errors.email ? (
-              <span className="text-danger">{frm.errors.email}</span>
-            ) : (
-              ""
-            )}
+    <section style={{backgroundColor:"#f5f5f5"}}>
+      <div className='container'>
+        <div className="login-page">
+          <div className="login-title">
+            <h3>Login</h3>
           </div>
-          <div className="form-group">
-            <label htmlFor="floatingPassword" style={{ fontSize: 20 }}>
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="floatingPassword"
-              name="password"
-              required
-              minLength={6}
-              value={frm.values.password}
-              onChange={frm.handleChange}
-              onBlur={frm.handleBlur}
-            />
-            {frm.errors.password ? (
-              <span className="text-danger">{frm.errors.password}</span>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="navigate">
-            <NavLink to="/register" className="register-now">
-              Register Now?
-            </NavLink>
-            <button className="btn-submit" type="submit" id="submit">
-              Login
-            </button>
-          </div>
+          <form className="loginForm" id="formLogin" onSubmit={frm.handleSubmit}>
+            <div className="formlable">
+              <div className="form-group  mb-3">
+                <label htmlFor="floatingInput" style={{ fontSize: 20 }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="floatingInput"
+                  name="email"
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  value={frm.values.email}
+                  onChange={frm.handleChange}
+                  onBlur={frm.handleBlur}
+                />
+                {frm.errors.email ? (
+                  <span className="text-danger">{frm.errors.email}</span>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="floatingPassword" style={{ fontSize: 20 }}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="floatingPassword"
+                  name="password"
+                  required
+                  minLength={6}
+                  value={frm.values.password}
+                  onChange={frm.handleChange}
+                  onBlur={frm.handleBlur}
+                />
+                {frm.errors.password ? (
+                  <span className="text-danger">{frm.errors.password}</span>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="navigate">
+                <NavLink to="/register" className="register-now">
+                  Register Now?
+                </NavLink>
+                <button className="btn-submit theme-btn" type="submit" id="submit">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </section>
+      </div>
+    </section>
   )
 }

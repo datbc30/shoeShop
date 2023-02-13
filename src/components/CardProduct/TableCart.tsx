@@ -1,15 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/configStore';
+import { AppDispatch, RootState } from '../../redux/configStore';
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import { remoteFormCart } from '../../redux/reducers/productReducer';
 
 
 type Props = {}
 
 export default function TableCart({ }: Props) {
     const { arrCart } = useSelector((state: RootState) => state.productReducer);
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     
     interface DataType {
         key: any;
@@ -47,7 +48,21 @@ export default function TableCart({ }: Props) {
         },
         {
           title: 'Action',
-          key: 'action',
+          dataIndex:'id',
+          key: 'id',
+          render: (id) => {
+            return (
+              <div>
+                <button className='btn action-delete'
+                        style={{backgroundColor: 'rgb(204 204 204)'}}
+                        onClick={() => {
+                          console.log({id});
+                            dispatch(remoteFormCart(id))
+                        }}
+                >Delete</button>
+              </div>
+            )
+          }
         },
       ];
       
@@ -56,7 +71,7 @@ export default function TableCart({ }: Props) {
     //   console.log({daynemay:arrCart[0][0]});
     //   console.log({dayneba:arrCart[0]['name']});
       dataArr = arrCart.map((e:any,index:number) => ({
-        key: index,
+          key: index,
           id: e.id,
           image: e.image,
           name: e.name,
@@ -66,6 +81,6 @@ export default function TableCart({ }: Props) {
       console.log({dataArr});
 
   return (
-    <Table columns={columns} dataSource={dataArr} />
+    <Table scroll={{ x: true}} columns={columns} dataSource={dataArr} />
     )
 }

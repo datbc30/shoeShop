@@ -9,7 +9,7 @@
     }
     &-element {
       .container {
-        .col-4 {
+        .col-12 {
           h2 {
             text-transform: uppercase;
             font-weight: 600;
@@ -45,7 +45,7 @@
             }
           }
         }
-        .col-4.middle {
+        .col-lg-4.middle {
           border-right: 2px solid #d5d5d5;
           border-left: 2px solid #d5d5d5;
         }
@@ -55,6 +55,13 @@
           }
         }
       }
+    } 
+  }
+
+  @media (max-width: 768px) {
+    .col-12.middle {
+      border-right: none;
+      border-left: none;
     }
   }
   

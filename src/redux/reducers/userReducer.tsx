@@ -39,6 +39,7 @@ export interface OderHistory{
 const initialState: any = {
   userLogin: getStoreJson(USER_LOGIN) || {},
   userToken: "",
+  oderProfile: [],
 };
 const userReducer = createSlice({
   name: "userReducer",
@@ -50,11 +51,13 @@ const userReducer = createSlice({
     getProfileAction: (state, action: PayloadAction<Profile>) => {
       state.userLogin = action.payload;
     },
-   
+   getOderProfile: (state, action: PayloadAction<OderHistory>) => {
+     state.oderProfile = action.payload
+   },
   }
 });
 
-export const {userCheck,getProfileAction} = userReducer.actions;
+export const {userCheck,getProfileAction, getOderProfile} = userReducer.actions;
 export default userReducer.reducer;
 
 export const registerApi = (userRes: UserModel) => {
@@ -112,3 +115,30 @@ export const getProfileApi = () => {
     }
   };
 };
+
+export const submitOrderApi = (arrCart:any) => {
+  console.log({arrCart});
+  const orderDetail = arrCart.map((e:any,index:number) => {
+      return{
+        productId: e.id,
+        quantity: e.quantityBuy
+      }
+  })
+  console.log({orderDetail, email:"dat"});
+  
+  return async (dispatch:AppDispatch) => {
+    const token = getStore(ACCESS_TOKEN)
+    try{
+      let url = "https://shop.cyberlearn.vn/api/Users/order";
+      let headers = { Authorization: `Bearer ${token}` };
+      const result = await http.post(url, {orderDetail,email:"lll@gmail.com"});
+      console.log({result});
+      const action = getOderProfile(result.data.content)
+      dispatch(action)
+    }
+    catch(err) {
+       console.log({err});
+     }
+  }
+}
+
